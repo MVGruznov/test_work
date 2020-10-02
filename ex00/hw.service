@@ -1,0 +1,6 @@
+[Unit]
+	Description= start hello world script
+[Service]
+	ExecStart=/usr/bin/hw_script.sh
+	Type=simple
+	StandardOutput=tty
