@@ -1,0 +1,10 @@
+FROM debian
+
+RUN apt-get update && apt-get upgrade -y && apt-get install -y git
+WORKDIR /code 
+ENTRYPOINT ["git", "clone"] 
+CMD ["https://github.com/MVGruznov/test_work.git"]
+
+# docker build -t test .
+# docker run -ti test
+# docker run -v /tmp/code:/code test 
