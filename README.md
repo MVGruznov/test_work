@@ -3,40 +3,20 @@
 Задание 1.
 
 1) Написать bash скрипт который печатает hello world!!! Каждые 10 секунд
-Решение:
-
-#!/bin/bash
-while :
-do
-	echo "hello world!!!"
-	sleep 10
-done
-
+Решение находится в файле ex00/hw_script.sh
 
 2) Создать linux сервис который запускает этот скрипт
 
-Решение:
+Решение находится в файле ex00/hw.service
 
-[Unit]
-	Description= start hello world script
-[Service]
-	ExecStart=/usr/bin/hw_script.sh
-	Type=simple
-	StandardOutput=tty
- 
- Задание 2.
+Также я создал небольшой скрипт, который создает на машине файл со скриптом, сервисом, и запускает сервис, он находится в файле ex00/deploy_and_start.sh
+
+Задание 2.
  
  1) Создать докер-образ (Dockerfile), который при запуске загружает определенный проект с github и размещает его в папку /code внутри контейнера 
 Загрузка проекта должна происходить при запуске контейнера(не в момент сборки образа!) 
 
-Решение:
-
-FROM debian
-
-RUN apt-get update && apt-get upgrade -y && apt-get install -y git
-WORKDIR /code 
-ENTRYPOINT ["git", "clone"] 
-CMD ["https://github.com/MVGruznov/test_work.git"]
+Решение надотится в файле ex01/dockerfile
 
 2) Параметризировать адрес гит репозитория, с которого будет загружен код. 
 
@@ -54,11 +34,4 @@ docker run -v /tmp/code:/code test
 
 4) Настроить docker-compose файл, позволяющий выполнять пункты 2 и 3. 
 
-Решение:
-
-version: '3'
-services:
-    git-clone:
-        build: .
-        volumes:
-            - /tmp/code:/code
+Решение находится в файле ex01/docker-compose.yml
