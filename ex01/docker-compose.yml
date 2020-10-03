@@ -1,0 +1,6 @@
+version: '3'
+services:
+    git-clone:
+        build: .
+        volumes:
+            - /tmp/code:/code
